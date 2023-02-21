@@ -1,0 +1,7 @@
+/*预览模式图片居中*/
+
+.markdown-preview-view img{
+right: -50%;
+position: relative;
+transform: translateX(-50%);
+}

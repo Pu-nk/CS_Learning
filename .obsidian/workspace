@@ -1,0 +1,152 @@
+{
+  "main": {
+    "id": "528653ed9a63eff3",
+    "type": "split",
+    "children": [
+      {
+        "id": "5a7f3e40e807df96",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "sigmoid 激活函数.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "aee9778401831457",
+    "type": "split",
+    "children": [
+      {
+        "id": "8ed33cb6a369edbf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c111830ec3b59e98",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "1838f8c9cea04065",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "255881c880e5ec20",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 297.5
+  },
+  "right": {
+    "id": "cb2a045f1c92fe18",
+    "type": "split",
+    "children": [
+      {
+        "id": "204abdadb8468ec8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c64091d555f5a9a3",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "sigmoid 激活函数.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0005c5178ad1f423",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "sigmoid 激活函数.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "286063285297a2ec",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "a87d6149d62c4094",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "sigmoid 激活函数.md"
+              }
+            }
+          },
+          {
+            "id": "894081ec1fb8054f",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "5a7f3e40e807df96",
+  "lastOpenFiles": [
+    "Value and momentum yes, size and CAPM no.md",
+    "Boosting Tree.md",
+    "Ghost BatchNorm.md",
+    "papers_pool/q1.md",
+    "GBDT.md",
+    "CART.md",
+    "[.md",
+    "papers_pool/未命名.md",
+    "Lasso.md",
+    "attachments/Pasted image 20220812162103.png"
+  ]
+}

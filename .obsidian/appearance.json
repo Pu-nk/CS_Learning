@@ -1,0 +1,15 @@
+{
+  "theme": "obsidian",
+  "cssTheme": "Minimal",
+  "baseFontSize": 19,
+  "textFontFamily": "LXGW WenKai",
+  "accentColor": "#a674ec",
+  "interfaceFontFamily": "SF Pro",
+  "monospaceFontFamily": "Hack Nerd Font Mono",
+  "translucency": true,
+  "enabledCssSnippets": [
+    "sinp",
+    "circle",
+    "tag"
+  ]
+}

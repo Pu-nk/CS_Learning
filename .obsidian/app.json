@@ -1,0 +1,7 @@
+{
+  "promptDelete": false,
+  "attachmentFolderPath": "./attachments",
+  "showUnsupportedFiles": true,
+  "readableLineLength": false,
+  "showLineNumber": true
+}
