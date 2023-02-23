@@ -19,5 +19,6 @@
   "obsidian-embedded-code-title",
   "remotely-save",
   "obsidian-latex-suite",
-  "convert-url-to-iframe"
+  "convert-url-to-iframe",
+  "obsidian-shellcommands"
 ]

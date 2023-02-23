@@ -25,14 +25,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "损失函数改进.md",
+                "file": "相关系数损失函数.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c890f161d740cb60",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "mqmb_chapters/Chapter 7 机器学习.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -99,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "损失函数改进.md",
+                "file": "mqmb_chapters/Chapter 7 机器学习.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "损失函数改进.md",
+                "file": "mqmb_chapters/Chapter 7 机器学习.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "损失函数改进.md"
+                "file": "mqmb_chapters/Chapter 7 机器学习.md"
               }
             }
           },
@@ -172,17 +184,17 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "25e509c67cca088b",
+  "active": "c890f161d740cb60",
   "lastOpenFiles": [
-    "偏差与方差.md",
+    "分位数损失函数.md",
+    "相关系数损失函数.md",
     "mqmb_chapters/Chapter 7 机器学习.md",
+    "损失函数改进.md",
+    "偏差与方差.md",
     "回测框架.md",
     "QUANT_FEATURES SUMMARY.md",
     "Course/CS61A Note.md",
-    "相关系数损失函数.md",
-    "损失函数改进.md",
     "mqmb_chapters/Chapter 5 凸优化.md",
-    "My Quant Math Book.md",
-    "CART.md"
+    "My Quant Math Book.md"
   ]
 }

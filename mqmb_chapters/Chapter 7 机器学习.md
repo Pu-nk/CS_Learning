@@ -375,9 +375,11 @@ Kmeans 很难对环状数据进行聚类
 - Given data $\left\{\boldsymbol{x}_i\right\}_{i=1}^n$ and similarity $W\left(\boldsymbol{x}_i, \boldsymbol{x}_j\right)$ , partition data in groups: 
 	- points in the same group are connected 
 	- points in different groups are disconnected 
-- Similarity Graph: $G(V, E, W)$  Vertices, Edge, Edge Weight 
-	- 邻接矩阵刻画连通性，使得聚类结果中分到同一个组的边具有较大的权重，而分到不同组的边具有较小的权重
-	- 割（Cut）：$\operatorname{cut}(A, B)=\sum_{i \in A, j \in B} W_{i j}$ 割函数实际刻画了两个子图的连通性
+- Similarity Graph: $G(V, E, W)$  Vertices, Edge, Edge 
+- 使用高斯核函数来具有特征向量的n条数据来构建图
+- Weight (权重矩阵)
+	- 邻接矩阵刻画连通性，使得聚类结果中分到同一个组的边权重之和比较大，而分到不同组的边的权重之和比较小
+	- 割（Cut）：$\operatorname{cut}(A, B)=\sum_{i \in A, j \in B} W_{i j}$ A中的一个顶点和B中的顶点有边相连的权重之和，割函数实际刻画了两个子图的连通性。
 	- Normalize Cut： $\operatorname{Ncut}(A, B)=\operatorname{cut}(A, B)\left(\frac{1}{\operatorname{vol}(A)}+\frac{1}{\operatorname{vol}(B)}\right)$
 	- $\operatorname{vol}(A)=\sum_{i \in A} d_i$, $d_i=\sum_j W_{i j}$, 调和平均使得两个子集都不是特别小
 - 图拉普拉斯矩阵
@@ -385,8 +387,10 @@ Kmeans 很难对环状数据进行聚类
 	- Unnormalized Graph Laplacian: 
 		- $\boldsymbol{L}=\boldsymbol{D}-\boldsymbol{W}$
 	- Normalized Graph Laplacian:  度矩阵变成单位阵是希望图上重要度一致
+		- $\boldsymbol{D}$是对角阵，每个对角元为所有链接该点的权重的和
 		- $\boldsymbol{L}_{\text {symmetric }}=\boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{L} \boldsymbol{D}^{-\frac{1}{2}}=\boldsymbol{I}-\boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{W} \boldsymbol{D}^{-\frac{1}{2}}$
 		- $\boldsymbol{L}_{\text {RandomWalk }}=\boldsymbol{D}^{-1} \boldsymbol{L}=\boldsymbol{I}-\boldsymbol{D}^{-1} \boldsymbol{W}$ 每一列sum为1，类似概率分布，可以看作是一次在图上的随机游走
+	- Normalized Cut
 		- 图拉普拉斯矩阵是为了更有效率的计算Ncut
 $$
 f_i=\left\{\begin{array}{cc}
@@ -394,10 +398,11 @@ f_i=\left\{\begin{array}{cc}
 -\frac{1}{\operatorname{vol}(B)} & \text { if } i \in B
 \end{array}\right.
 $$
+				
 $$
 \operatorname{Ncut}(A, B)=\operatorname{cut}(A, B)\left(\frac{1}{\operatorname{vol}(A)}+\frac{1}{\operatorname{vol}(B)}\right)=\frac{\boldsymbol{f}^T \boldsymbol{L} \boldsymbol{f}}{\boldsymbol{f}^T \boldsymbol{D} \boldsymbol{f}}
 $$
-
+- 流形假设
 $$
 \boldsymbol{f}^T \boldsymbol{L} \boldsymbol{f}=\sum_{i, j} f_i L_{i j} f_j=\frac{1}{2} \sum_{i, j} W_{i j}\left(f_i-f_j\right)^2=\sum_{i \in A, j \in B} W_{i j}\left(\frac{1}{\operatorname{vol}(A)}+\frac{1}{\operatorname{vol}(B)}\right)^2
 $$
@@ -410,6 +415,37 @@ $$
 $$
 但是因为不能进行离散优化，将其变成连续形式优化：
 $$
+\min _{\boldsymbol{f}} \operatorname{Ncut}(A, B)=\frac{\boldsymbol{f}^T \boldsymbol{L} \boldsymbol{f}}{\boldsymbol{f}^T \boldsymbol{D} \boldsymbol{f}} \quad \text { s.t. } f_i \in \mathbb{R}
+$$
+瑞利商，两个二次型的商，这个问题等价于
+$$
 \min _{\boldsymbol{f}} \boldsymbol{f}^T \boldsymbol{L} \boldsymbol{f} \quad \text { s.t. } \quad \boldsymbol{f}^T \boldsymbol{D} \boldsymbol{f}=1
 $$
- 
+ 这个最优化问题的解就是这样一个广义特征值问题$L f=\lambda D f$,定义拉格朗日乘子法：
+ $$
+\mathcal{L}=\boldsymbol{f}^T \boldsymbol{L} \boldsymbol{f}-\lambda\left(\boldsymbol{f}^T \boldsymbol{D} \boldsymbol{f}-1\right) .
+$$
+$$
+\boldsymbol{f}: \nabla_{\boldsymbol{f}} \mathcal{L}=2(\boldsymbol{L}-\lambda \boldsymbol{D}) \boldsymbol{f}=\mathbf{0} \Rightarrow \boldsymbol{L} \boldsymbol{f}=\lambda \boldsymbol{D} \boldsymbol{f}
+$$
+也就是说f是最优值的时候对应的二次型的值是特征值$\lambda$
+$$
+\boldsymbol{f}^T \boldsymbol{L} \boldsymbol{f}=\lambda \boldsymbol{f}^T \boldsymbol{D} \boldsymbol{f}=\lambda
+$$
+图拉普拉斯矩阵特征值的大小刻画了图的连通性
+另外，有时候还会加其他正则项：
+$$
+\min _{\boldsymbol{f}} \boldsymbol{f}^T \boldsymbol{L} \boldsymbol{f} \quad \text { s.t. } \quad \boldsymbol{f}^T \boldsymbol{D} \boldsymbol{f}=1, \boldsymbol{f}^T \boldsymbol{f}=C
+$$
+ ![[Pasted image 20230223214441.png]]
+ 两个约束的等值线的交点就是可行解域
+ 第一个特征值为0，没有意义，代表图上的所有顶点都是一类
+ - 谱图理论
+如果一个图有k个不相连的分量，那么图拉普拉斯矩阵是分块对角矩阵而且前k个特征值都是0，也就是说0特征值的重数代表图中连通分量的个数
+![[Pasted image 20230223215222.png]]
+- 谱聚类算法
+	- 选择图拉普拉斯矩阵k个特征值对应的前k个特征向量去做Kmeans聚类（在n维度上代表每个图的顶点，在k维度上其实就是提取出前k个图拉普拉斯矩阵）
+	- 如何选择k：
+		- eigengap: $\Delta_k=\left|\lambda_k-\lambda_{k-1}\right|$
+		- 衰减的特别快说明是低秩矩阵
+- 降维技术
