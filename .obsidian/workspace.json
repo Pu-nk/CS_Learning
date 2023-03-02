@@ -42,9 +42,45 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "0919eafd2e19e85c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PyTorch：定义自己的自动求导函数.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "11fb0e52ebe0f1dc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Ghost BatchNorm.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "8b950517a0ac92c8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "mqmb_chapters/Chapter 7 机器学习.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -184,17 +220,17 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "c890f161d740cb60",
+  "active": "8b950517a0ac92c8",
   "lastOpenFiles": [
     "分位数损失函数.md",
-    "相关系数损失函数.md",
-    "mqmb_chapters/Chapter 7 机器学习.md",
-    "损失函数改进.md",
-    "偏差与方差.md",
-    "回测框架.md",
-    "QUANT_FEATURES SUMMARY.md",
-    "Course/CS61A Note.md",
-    "mqmb_chapters/Chapter 5 凸优化.md",
-    "My Quant Math Book.md"
+    "mqpb_chapters/Chapter 1 金融基础知识.md",
+    "可解释机器学习方法.md",
+    "SHAP 可解释性学习.md",
+    "git 简明教程.md",
+    "Ghost BatchNorm.md",
+    "GBDT.md",
+    "CART.md",
+    "Boosting Tree.md",
+    "AlphaNet.md"
   ]
 }

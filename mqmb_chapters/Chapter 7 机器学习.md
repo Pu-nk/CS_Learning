@@ -449,3 +449,6 @@ $$
 		- eigengap: $\Delta_k=\left|\lambda_k-\lambda_{k-1}\right|$
 		- 衰减的特别快说明是低秩矩阵
 - 降维技术
+	- principal component analysis (PCA)
+		- 从数据相关性的角度出发寻找主成分
+	- 
