@@ -73,7 +73,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "mqmb_chapters/Chapter 7 机器学习.md",
+                "file": "mqpb_chapters/Chapter 1 金融基础知识.md",
                 "mode": "source",
                 "source": false
               }
@@ -147,7 +147,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "mqmb_chapters/Chapter 7 机器学习.md",
+                "file": "mqpb_chapters/Chapter 1 金融基础知识.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -164,7 +164,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "mqmb_chapters/Chapter 7 机器学习.md",
+                "file": "mqpb_chapters/Chapter 1 金融基础知识.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -187,7 +187,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "mqmb_chapters/Chapter 7 机器学习.md"
+                "file": "mqpb_chapters/Chapter 1 金融基础知识.md"
               }
             }
           },
@@ -222,6 +222,7 @@
   },
   "active": "8b950517a0ac92c8",
   "lastOpenFiles": [
+    "mqmb_chapters/Chapter 7 机器学习.md",
     "分位数损失函数.md",
     "mqpb_chapters/Chapter 1 金融基础知识.md",
     "可解释机器学习方法.md",
@@ -230,7 +231,6 @@
     "Ghost BatchNorm.md",
     "GBDT.md",
     "CART.md",
-    "Boosting Tree.md",
-    "AlphaNet.md"
+    "Boosting Tree.md"
   ]
 }

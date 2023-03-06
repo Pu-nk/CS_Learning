@@ -451,4 +451,70 @@ $$
 - 降维技术
 	- principal component analysis (PCA)
 		- 从数据相关性的角度出发寻找主成分
-	- 
+		- 求解准则重构误差最小化： $\min _{v_1, v_2, \ldots, v_k} \sum_{i=1}^n\left\|x_i-\lambda_{i 1} v_1-\cdots-\lambda_{i k} v_k\right\|_2^2$， 和回归思想基本一样，都是尽可能的使得所有样本点到截面的距离是最小的，这个实际可以写做：
+$$
+\min _{\boldsymbol{V}^T \boldsymbol{V}=\boldsymbol{I}} \sum_{i=1}^n\left\|\boldsymbol{x}_i-\boldsymbol{V} \boldsymbol{V}^T \boldsymbol{x}_i\right\|_2^2
+
+$$
+
+$$
+\boldsymbol{V}^T=\left(\begin{array}{c}
+\boldsymbol{v}_1^T \\
+\vdots \\
+\boldsymbol{v}_k^T
+\end{array}\right) \Longrightarrow \boldsymbol{V}^T \boldsymbol{x}_i=\left(\begin{array}{c}
+\boldsymbol{v}_1^T \\
+\vdots \\
+\boldsymbol{v}_k^T
+\end{array}\right) \boldsymbol{x}_i=\left(\begin{array}{c}
+\lambda_{1 i} \\
+\vdots \\
+\lambda_{k i}
+\end{array}\right) \Longrightarrow \lambda_{i 1} \boldsymbol{V}_1+\cdots+\lambda_{i k} \boldsymbol{x}_i=\boldsymbol{v}_k
+$$
+- 重构时可以使用L1距离，闵可夫斯基距离，此时会得到一个新的模型，它的解并不是特征值分解
+$$
+\begin{align}
+
+\sum_{i=1}^n\left\|\boldsymbol{x}_i-\boldsymbol{V} \boldsymbol{V}^T \boldsymbol{x}_i\right\|_2^2 & =\sum_{i=1}^n\left(\boldsymbol{x}_i-\boldsymbol{V} \boldsymbol{V}^T \boldsymbol{x}_i\right)^T\left(\boldsymbol{x}_i-\boldsymbol{V} \boldsymbol{V}^T \boldsymbol{x}_i\right) \\ \\
+& =\sum_{i=1}^n\left(\boldsymbol{x}_i^T \boldsymbol{x}_i-2 \boldsymbol{x}_i^T \boldsymbol{V} \boldsymbol{V}^T \boldsymbol{x}_i+\boldsymbol{x}_i^T \boldsymbol{V} \boldsymbol{V}^T \boldsymbol{V} \boldsymbol{V}^T \boldsymbol{x}_i\right) \\
+
+& \Rightarrow \sum_{i=1}^n\left(-\boldsymbol{x}_i^T \boldsymbol{V} \boldsymbol{V}^T \boldsymbol{x}_i\right)=\sum_{i=1}^n \operatorname{tr}\left(-\boldsymbol{V}^T \boldsymbol{x}_i \boldsymbol{x}_i^T \boldsymbol{V}\right) \\
+& =\operatorname{tr}\left(-\boldsymbol{V}^T \sum_{i=1}^n\left(\boldsymbol{x}_i \boldsymbol{x}_i^T\right) \boldsymbol{V}\right)=\operatorname{tr}\left(-\boldsymbol{V}^T \boldsymbol{X} \boldsymbol{X}^T \boldsymbol{V}\right)
+\end{align}
+
+
+$$
+trace_norm是非常常见的优化形式，所有的二次型优化最终都会变成trace_norm，最终的优化问题变成了：
+$$
+\max _{\boldsymbol{V}^T \boldsymbol{V}=\boldsymbol{I}} \operatorname{tr}\left(\boldsymbol{V}^T \boldsymbol{X} \boldsymbol{X}^T \boldsymbol{V}\right)
+$$
+拉格朗日走一波：
+$$
+\mathcal{L}=\operatorname{tr}\left(\boldsymbol{V}^T \boldsymbol{X} \boldsymbol{X}^T \boldsymbol{V}\right)+\operatorname{tr}\left(\left(\boldsymbol{I}-\boldsymbol{V}^T \boldsymbol{V}\right) \boldsymbol{\Lambda}\right)
+$$
+其中$\boldsymbol{\Lambda}=\operatorname{diag}\left(\lambda_1, \ldots, \lambda_k\right) \neq 0$
+$$
+\frac{\partial \mathcal{L}}{\partial \boldsymbol{V}}=2 \boldsymbol{X} \boldsymbol{X}^T \boldsymbol{V}+\mathbf{2 V} \boldsymbol{\Lambda}=\mathbf{0} \Rightarrow \boldsymbol{X} \boldsymbol{X}^T \boldsymbol{V}=\boldsymbol{V} \boldsymbol{\Lambda}
+$$
+协方差矩阵n比较大d比较小的时候做特征值分解复杂度低，d比较大n比较小的时候做奇艺值分解
+只要原问题有解， 那原问题的解必然是它的特征值分解的解， PCA的缺点缺乏可解释性
+- 非负矩阵分解
+![[Pasted image 20230302143906.png]]
+ 分成左矩阵和右矩阵发现右矩阵具有可解释性，也就是说pattern是通过两组pattern通过线性组合得到的，左边的矩阵称为字典具有特定的含义，而右边的矩阵coding就是权重矩阵来对字典进行线性组合。
+对矩阵做pca以后会破坏数据中的含义，而非负矩阵分解不会
+非负矩阵分解的定义是给定一个非负矩阵$\boldsymbol{X} \in \mathbb{R}_{+}^{d \times n}$, 分解成一个k列和k行的左矩阵和右矩阵$\boldsymbol{X} \approx L \boldsymbol{R}$, 目标函数是$\min _{\boldsymbol{L}, \boldsymbol{R}}\|\boldsymbol{X}-\boldsymbol{L} \boldsymbol{R}\|_F^2$, 其中$\boldsymbol{L} \in \mathbb{R}_{+}^{d \times k} \text { and } \boldsymbol{R} \in \mathbb{R}_{+}^{k \times n} \text { 都是非负矩阵 }$
+非负矩阵分解的好处在于
+- 只有加法，没有减法， 要求模型学到pattern，避免抵消(Cancellation)效应
+- block coordinate descent(CD), 初始化对模型影响比较大
+	- 选择初始点L0和R0
+	- 如果不收敛，交替优化左矩阵和右矩阵
+	- 投影梯度下降，先放弃约束找到最优解，然后投影到可行域中
+- 交替式非负最小二乘 $\underset{\boldsymbol{L} \in \mathbb{R}_{+}^{d \times k}}{\operatorname{argmin}}\|\boldsymbol{X}-\boldsymbol{L} \boldsymbol{R}\|_F^2 \text { and } \underset{\boldsymbol{R} \in \mathbb{R}_{+}^{k \times n}}{\operatorname{argmin}}\|\boldsymbol{X}-\boldsymbol{L} \boldsymbol{R}\|_F^2$, 假设没有约束求伪逆作为初始解 $\boldsymbol{L}=\left[\boldsymbol{X} \boldsymbol{R}^{\dagger}\right]_\epsilon \text { and } \boldsymbol{R}=\left[\boldsymbol{L}^{\dagger} \boldsymbol{X}\right]_\epsilon$
+- 改进设置自适应学习速率，可以将梯度下降简化为$\boldsymbol{L} \leftarrow \boldsymbol{L} \circ \frac{D R^T}{L R R^T} \text { and } \boldsymbol{R} \leftarrow \boldsymbol{R} \circ \frac{L^T X}{L^T L R}$, 乘法可以天然满足非负性，同时为了避免除0，需要在分母加一个Laplace系数$\epsilon$
+降维方法的通项公式 $\min _{\boldsymbol{D} \in \mathcal{D}} \mathbb{E}_{\boldsymbol{x}}[L(\boldsymbol{x}, \boldsymbol{D})] \quad \text { where } \quad L(\boldsymbol{x}, \boldsymbol{D})=\min _{\boldsymbol{\alpha} \in \mathcal{A}} \frac{1}{2}\|\boldsymbol{x}-\boldsymbol{D} \boldsymbol{\alpha}\|^2+\lambda \phi(\boldsymbol{\alpha})$
+- 稀疏编码
+![[Pasted image 20230302153336.png]]
+
+
+
