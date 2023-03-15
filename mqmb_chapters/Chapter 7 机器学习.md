@@ -1,3 +1,36 @@
+# Linear Model
+## 线性回归
+![[Pasted image 20230315101903.png]]
+- 假设空间 $\mathcal{H}$ 是一个映射 $\mathcal{X} \rightarrow \mathcal{Y}$ 的函数的集合， 我们希望这些函数满足一些正则性（连续性、光滑性以及简单性）。假设空间是线性空间，可以用线性空间中如何去寻找一个超平面的方法来做；假设空间是树，可以采用树搜索算法来做
+- 线性回归中的假设空间：
+	- Training data: $\left(\boldsymbol{x}_1, y_1\right),\left(\boldsymbol{x}_2, y_2\right), \ldots,\left(\boldsymbol{x}_n, y_n\right)$， Feature vector: $\boldsymbol{x} \in \mathbb{R}^d$, response: $y \in \mathbb{R}$
+	- Prediction of hypothesis $h$ parametrized by $\boldsymbol{w}$ :
+$$
+h(\boldsymbol{x})={w_0}+\sum_{j=1}^d w_j x_j=\sum_{j=0}^d w_j x_j=w \cdot \boldsymbol{x}
+$$
+![[Pasted image 20230315103733.png]]
+- 损失函数
+	- l2 损失函数具有光滑性，优化简单
+![[Pasted image 20230315105545.png]]
+- 线性回归具有解析解（计算速度快），但计算速度其实并不快，算法复杂度$O(d^2(n+d))$
+- 梯度下降：
+$$
+J(\boldsymbol{w})=J\left(\boldsymbol{w}_0\right)+\left(\boldsymbol{w}-\boldsymbol{w}_0\right)^T \boldsymbol{g}+\cdots 
+$$
+$$
+
+J(\boldsymbol{w}-\eta \boldsymbol{g}) \approx J(\boldsymbol{w})-\eta \boldsymbol{g}^T \boldsymbol{g}
+$$
+也就是说只要沿着梯度方向调整权重，就会使得损失函数减小，算法复杂度为$O(ndT)$, 如果n 特别大会采用随机梯度下降（SGD），算法复杂度为$O(mdT)$， 对于维度爆炸的问题可以采用并行化、分布式计算的方法来解决
+
+```ad-tip
+对n可以采用因为计算损失函数是计算所有样本上损失函数的和，采样m是n的无偏估计，而对于维度d来说，采样其中的部分维度相当于是进入了原问题的一个线性子空间，会丢失信息。
+
+```
+
+## 非线性化
+## 正则化
+## 线性分类
 # Decision Tree
 tabular特征/属性具有异构性构建线性模型（做归一化、0-1encoding）
 希望树模型具有可解释性、泛化性

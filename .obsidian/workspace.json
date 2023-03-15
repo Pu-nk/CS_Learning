@@ -73,14 +73,34 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "mqpb_chapters/Chapter 1 金融基础知识.md",
+                "file": "mqmb_chapters/Chapter 7 机器学习.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "b1e30221f2415faa",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          },
+          {
+            "id": "f9e3351622cc5aed",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "mqmb_chapters/Chapter 7 机器学习.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -147,7 +167,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "mqpb_chapters/Chapter 1 金融基础知识.md",
+                "file": "mqmb_chapters/Chapter 7 机器学习.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -164,7 +184,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "mqpb_chapters/Chapter 1 金融基础知识.md",
+                "file": "mqmb_chapters/Chapter 7 机器学习.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -187,7 +207,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "mqpb_chapters/Chapter 1 金融基础知识.md"
+                "file": "mqmb_chapters/Chapter 7 机器学习.md"
               }
             }
           },
@@ -209,28 +229,32 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "canvas:新建白板": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "remotely-save:Remotely Save": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
-      "canvas:Create new canvas": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "8b950517a0ac92c8",
+  "active": "f9e3351622cc5aed",
   "lastOpenFiles": [
+    "mqmb_chapters/attachments/Pasted image 20230315105545.png",
+    "mqmb_chapters/attachments/Pasted image 20230315103733.png",
+    "mqmb_chapters/attachments/Pasted image 20230315102141.png",
+    "mqmb_chapters/attachments/Pasted image 20230315101903.png",
+    "mqmb_chapters/Chapter 8 深度学习.md",
+    "AlphaNet.md",
     "mqmb_chapters/Chapter 7 机器学习.md",
-    "分位数损失函数.md",
     "mqpb_chapters/Chapter 1 金融基础知识.md",
+    "分位数损失函数.md",
     "可解释机器学习方法.md",
     "SHAP 可解释性学习.md",
     "git 简明教程.md",
     "Ghost BatchNorm.md",
-    "GBDT.md",
-    "CART.md",
-    "Boosting Tree.md"
+    "GBDT.md"
   ]
 }
